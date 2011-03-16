@@ -1,0 +1,14 @@
+{
+    "id": "rok.easterhegg2011.webos.store",
+    "version": "1.0.0",
+    "vendor": "R. Kowalski & nono",
+    "type": "web",
+    "main": "index.html",
+    "title": "Easterhegg 2011",
+    "noDeprecatedStyles": true,
+    "theme": "dark",
+ 
+    "icon": "Appvorlage64x64_rund_.png",
+    "splashicon": "Appvorlage256x256_rund.png",
+    "splashBackground":"images/splash.png"
+}

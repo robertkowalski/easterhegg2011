@@ -1,0 +1,57 @@
+.title_subtile {
+    color:#fff;
+}
+
+.landscape{
+    width:160px;
+    min-width:160px;
+}
+.portrait{
+    width:320px;
+    min-width:320px;
+}
+
+/* scroller container */
+.scrollerContainerPortait {
+    /* width:  960px; */
+    height: 300px;
+}
+/* item */
+.scrollerItem {
+    float: left;
+}
+
+
+.truncateCSS3 {
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+
+.italic {
+    font-style:italic;
+}
+
+
+.buttonClass {
+    position:fixed;
+    bottom:0px;    
+    right:10px;
+    padding-right:200px;
+}
+.buttonClass2 {
+    position:fixed;
+    bottom:0px;
+    right:10px;
+    padding-right:100px;
+}
+.buttonClass3 {
+    position:fixed;
+    bottom:0px;
+    right:10px;
+}
+.copyright_help {
+    position:absolute;
+    left:10px;
+    bottom:-30px;
+}
