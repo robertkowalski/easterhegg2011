@@ -21,11 +21,11 @@ Fahrplan.process = function (response) {
             //Create times where no event is	
             for (i = 0; i < this.text[this.day][room].length - 1; i++) {
                 //borders for bubbles	
-				if (this.text[this.day][room][0].empty !== true) {
-					this.text[this.day][room][i].color = this.text[this.day][room][i].color + ';border:1px solid black;';
-					this.text[this.day][room][i].feedback = 'immediate';
-				}
-				//create empty times for template
+                if (this.text[this.day][room][0].empty !== true) {
+                    this.text[this.day][room][i].color = this.text[this.day][room][i].color + ';border:1px solid black;';
+                    this.text[this.day][room][i].feedback = 'immediate';
+                }
+                //create empty times for template
                 if (this.text[this.day][room][i].ending < this.text[this.day][room][i + 1].start) {
                     emptyTimes[this.day][room][countEmpty] = [];
                     emptyTimes[this.day][room][countEmpty].start = this.text[this.day][room][i].ending;
@@ -46,7 +46,7 @@ Fahrplan.process = function (response) {
                 }
             }
             //draw border around last bubble
-			if (this.text[this.day][room][0].empty !== true) {
+            if (this.text[this.day][room][0].empty !== true) {
                 this.text[this.day][room][this.text[this.day][room].length - 1].color =  this.text[this.day][room][this.text[this.day][room].length - 1].color + ';border:1px solid black;';
             }
             countEmpty=0;

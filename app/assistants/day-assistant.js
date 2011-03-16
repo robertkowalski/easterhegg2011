@@ -27,7 +27,7 @@ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY O
 
 
 function DayAssistant(response) {
-         
+
     this.orientation = response.orientation;
     this.day = response.day;
     this.date = new Date();  
@@ -45,17 +45,17 @@ DayAssistant.prototype.setup = function() {
     this.controller.setupWidget(Mojo.Menu.appMenu, appMenuAttributes, appMenuModel); 
 
     var widget;
-	var html = '';
-	var k = 0;
-	this.widArrayNames = [];
-	var containerwidth=0;
-	
+    var html = '';
+    var k = 0;
+    this.widArrayNames = [];
+    var containerwidth=0;
+    
     for(var i=0;i<Fahrplan.data[this.day].length;i++){
         this.menuModel = {
             items: Fahrplan.data[this.day][i]
         };
         widget = 'TimeWidget'+i;
-		this.widArrayNames[i] = widget;
+        this.widArrayNames[i] = widget;
         this.controller.setupWidget(widget, {
                 itemTemplate: "day/day-row-template",
                 listTemplate: "day/day-list-template",
@@ -63,19 +63,19 @@ DayAssistant.prototype.setup = function() {
                 renderLimit: 50,
                 reorderable: false
             },this.menuModel);
-		
-		k = i+1;
-		html += '<div class="scrollerItem" id="scrollerItem:'+k+'">'+'<div style="" id="title'+k+'" class="palm-page-header multi-line">'+Fahrplan.data[this.day][i][0].roomname+'</div>'+'<div style="padding-bottom:65px;" x-mojo-element="List" id="TimeWidget'+i+'"></div>'+'</div>';
+        
+        k = i+1;
+        html += '<div class="scrollerItem" id="scrollerItem:'+k+'">'+'<div style="" id="title'+k+'" class="palm-page-header multi-line">'+Fahrplan.data[this.day][i][0].roomname+'</div>'+'<div style="padding-bottom:65px;" x-mojo-element="List" id="TimeWidget'+i+'"></div>'+'</div>';
        
-	}	
-	containerwidth = Fahrplan.data[this.day].length*320;
-	$('container').setStyle({
-		width: containerwidth+'px'
-	});
-	
+    }	
+    containerwidth = Fahrplan.data[this.day].length*320;
+    $('container').setStyle({
+        width: containerwidth+'px'
+    });
+    
     $('parseWidget').update(html);
-	
-	this.controller.setupWidget("scrollerId", {
+    
+    this.controller.setupWidget("scrollerId", {
                             mode: 'horizontal-snap'
                             }, this.model = {
                             snapElements: { x: $$('.scrollerItem') },
@@ -90,11 +90,11 @@ DayAssistant.prototype.setup = function() {
 
 
 DayAssistant.prototype.activate = function(event) {
-	
+    
     this.widArrayRef = [];
     for(i=0;i<this.widArrayNames.length;i++){
-		this.widArrayRef[i] = this.controller.get("TimeWidget"+i);
-	}
+        this.widArrayRef[i] = this.controller.get("TimeWidget"+i);
+    }
 
     this.getStartupOrientation();
     
@@ -106,7 +106,7 @@ DayAssistant.prototype.activate = function(event) {
 
 DayAssistant.prototype.deactivate = function(event) {	
 
-	for (i = 0; i < this.widArrayRef.length; i++) {
+    for (i = 0; i < this.widArrayRef.length; i++) {
         this.controller.stopListening(this.widArrayRef[i], Mojo.Event.listTap, this.openDetailWithIdBind[i]);
     }
 };
@@ -114,7 +114,7 @@ DayAssistant.prototype.deactivate = function(event) {
 
 DayAssistant.prototype.cleanup = function(event) {
     
-	for (i = 0; i < this.widArrayRef.length; i++) {
+    for (i = 0; i < this.widArrayRef.length; i++) {
         this.controller.stopListening(this.widArrayRef[i], Mojo.Event.listTap, this.openDetailWithIdBind[i]);
     }
     this.controller.stopListening(document, "orientationchange", this.orientationBinder);      
@@ -154,7 +154,7 @@ DayAssistant.prototype.handleOrientation = function (event) {
         case 5:
             this.hideTitles();
             this.setLandscape();  
-			//this.setLandscapeClasses();       
+            //this.setLandscapeClasses();       
         break;   
     }
 };
@@ -164,7 +164,7 @@ DayAssistant.prototype.setLandscape = function(){
     
     if (OrientationHelper.last != 'landscape') {
         
-		this.setLandscapeClasses();
+        this.setLandscapeClasses();
     //make bubbles longer
         for (var room = 0; room < Fahrplan.data[this.day].length; room++) {
             for (var i = 0; i < Fahrplan.data[this.day][room].length; i++) {
@@ -178,8 +178,8 @@ DayAssistant.prototype.setLandscape = function(){
                 items: Fahrplan.data[this.day][i]
             };
 
-			this.controller.setWidgetModel(this.widArrayRef[i], this.newMenuModel[i]);
-		}
+            this.controller.setWidgetModel(this.widArrayRef[i], this.newMenuModel[i]);
+        }
 
     }
     this.showTitles();
@@ -216,31 +216,31 @@ DayAssistant.prototype.setPortrait = function(){
 
 DayAssistant.prototype.setLandscapeClasses = function(){
 
-	var i, k = 0;
-	var name, width;
+    var i, k = 0;
+    var name, width;
     for(i=0;i<this.widArrayRef.length;i++){
         k = i+1;
-		name = 'scrollerItem:'+k;
-		
-		$(name).removeClassName('portrait');
-		$(name).addClassName('landscape');
+        name = 'scrollerItem:'+k;
+        
+        $(name).removeClassName('portrait');
+        $(name).addClassName('landscape');
     }
     
 
-	var containerWidth = 160*this.widArrayRef.length;
+    var containerWidth = 160*this.widArrayRef.length;
     $('container').setStyle({
         width: containerWidth+'px'
     });
-	
+    
 }    
 
 DayAssistant.prototype.setPortraitClasses = function() {
   
     var k = 0;
-	var name;
+    var name;
     for(i=0;i<this.widArrayRef.length;i++){
         k = i+1;
-		name = 'scrollerItem:'+k;
+        name = 'scrollerItem:'+k;
         $(name).addClassName('portrait');
         $(name).removeClassName('landscape');
     }
@@ -326,12 +326,12 @@ DayAssistant.prototype.revealItem = function(timeID, room) {
 
 DayAssistant.prototype.showDetails = function(){
 
-	this.openDetailWithIdBind = [];
-	for (i = 0; i < this.widArrayRef.length; i++) {
-		this.openDetailWithIdBind[i] = this.openDetailWithId.bindAsEventListener(this, i);
-		this.controller.listen(this.widArrayRef[i], Mojo.Event.listTap, this.openDetailWithIdBind[i]);
-	}
-	
+    this.openDetailWithIdBind = [];
+    for (i = 0; i < this.widArrayRef.length; i++) {
+        this.openDetailWithIdBind[i] = this.openDetailWithId.bindAsEventListener(this, i);
+        this.controller.listen(this.widArrayRef[i], Mojo.Event.listTap, this.openDetailWithIdBind[i]);
+    }
+    
 };
 
 
