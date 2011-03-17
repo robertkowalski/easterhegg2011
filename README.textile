@@ -1,6 +1,6 @@
 h2. "Easterhegg 2011"
 
-*Copyright (c) 2010, R. Kowalski, Icons by nono*
+*Copyright (c) 2011, R. Kowalski, Icons by nono*
 *All rights reserved.*
 
 
