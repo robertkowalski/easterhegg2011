@@ -154,7 +154,7 @@ DayAssistant.prototype.handleOrientation = function (event) {
         case 5:
             this.hideTitles();
             this.setLandscape();  
-            //this.setLandscapeClasses();       
+            this.setLandscapeClasses();       
         break;   
     }
 };
